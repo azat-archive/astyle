@@ -4127,7 +4127,7 @@ bool ASFormatter::isCurrentBracketBroken() const
 				breakBracket = true;
 		}
 		// break the first bracket if a function
-		else if (bracketTypeStackEnd == 1
+		else if (bracketTypeStackEnd > 1
 		         && isBracketType((*bracketTypeStack)[bracketTypeStackEnd], COMMAND_TYPE))
 		{
 			breakBracket = true;
