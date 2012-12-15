@@ -4150,11 +4150,6 @@ bool ASFormatter::isCurrentBracketBroken() const
 				        && isBracketType((*bracketTypeStack)[bracketTypeStackEnd], COMMAND_TYPE))
 					breakBracket = true;
 			}
-			// if LINUX_MODE, break brackets for the inlined methods.
-			else if (bracketFormatMode == LINUX_MODE)
-			{
-			   breakBracket = true;
-			}
 		}
 	}
 	return breakBracket;
