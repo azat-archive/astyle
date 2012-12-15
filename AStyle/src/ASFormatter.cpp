@@ -4141,15 +4141,12 @@ bool ASFormatter::isCurrentBracketBroken() const
 				if (isBracketType((*bracketTypeStack)[bracketTypeStackEnd], COMMAND_TYPE))
 					breakBracket = true;
 			}
-			// if not C style then break the first bracket after a class if a function
-			else if (!isCStyle())
-			{
-				if ((isBracketType((*bracketTypeStack)[bracketTypeStackEnd-1], CLASS_TYPE)
-				        || isBracketType((*bracketTypeStack)[bracketTypeStackEnd-1], ARRAY_TYPE)
-				        || isBracketType((*bracketTypeStack)[bracketTypeStackEnd-1], STRUCT_TYPE))
-				        && isBracketType((*bracketTypeStack)[bracketTypeStackEnd], COMMAND_TYPE))
-					breakBracket = true;
-			}
+			// break the first bracket after a class if a function
+			if ((isBracketType((*bracketTypeStack)[bracketTypeStackEnd-1], CLASS_TYPE)
+					|| isBracketType((*bracketTypeStack)[bracketTypeStackEnd-1], ARRAY_TYPE)
+					|| isBracketType((*bracketTypeStack)[bracketTypeStackEnd-1], STRUCT_TYPE))
+					&& isBracketType((*bracketTypeStack)[bracketTypeStackEnd], COMMAND_TYPE))
+				breakBracket = true;
 		}
 	}
 	return breakBracket;
