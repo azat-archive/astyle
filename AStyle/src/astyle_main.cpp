@@ -583,7 +583,10 @@ void ASConsole::formatFile(const string &fileName_)
 	// if file has changed, write the new file
 	if (!filesAreIdentical || streamIterator.getLineEndChange(lineEndFormat))
 	{
-		writeFile(fileName_, encoding, out);
+		if (checkOnly)
+		{
+			writeFile(fileName_, encoding, out);
+		}
 		printMsg(_("Formatted  %s\n"), displayName);
 		filesFormatted++;
 	}
@@ -1619,6 +1622,9 @@ void ASConsole::printHelp() const
 	(*_err) << "    --convert-tabs  OR  -c\n";
 	(*_err) << "    Convert tabs to the appropriate number of spaces.\n";
 	(*_err) << endl;
+	(*_err) << "    --check-only    OR  -C\n";
+	(*_err) << "    Just check files for installed format, don't rewrite it.\n";
+	(*_err) << endl;
 	(*_err) << "    --close-templates  OR  -xy\n";
 	(*_err) << "    Close ending angle brackets on template definitions.\n";
 	(*_err) << endl;
@@ -1749,6 +1755,11 @@ void ASConsole::processOptions(vector<string>& argvOptions)
 			useAscii = true;
 			setlocale(LC_ALL, "C");		// use English decimal indicator
 			localizer.setLanguageFromName("en");
+		}
+		else if ( isOption(arg, "-C" )
+					|| isOption(arg, "--check-only") )
+		{
+			checkOnly = true;
 		}
 		else if ( isOption(arg, "--options=none") )
 		{
