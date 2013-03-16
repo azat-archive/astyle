@@ -583,7 +583,7 @@ void ASConsole::formatFile(const string &fileName_)
 	// if file has changed, write the new file
 	if (!filesAreIdentical || streamIterator.getLineEndChange(lineEndFormat))
 	{
-		if (checkOnly)
+		if (!checkOnly)
 		{
 			writeFile(fileName_, encoding, out);
 		}
