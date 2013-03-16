@@ -172,7 +172,7 @@ class ASConsole
 		bool ignoreExcludeErrorsDisplay;    // don't display unmatched excludes
 		bool optionsFileRequired;           // options= option
 		bool useAscii;                      // ascii option
-		bool checkOnly;						// option to check only.
+		bool dryRun;						// option to check only.
 		// other variables
 		bool hasWildcard;                   // file name includes a wildcard
 		size_t mainDirectoryLength;         // directory length to be excluded in displays
@@ -219,7 +219,7 @@ class ASConsole
 			filesUnchanged = 0;
 			linesOut = 0;
 			useAscii = false;
-			checkOnly = false;
+			dryRun = false;
 		}
 
 		// functions
