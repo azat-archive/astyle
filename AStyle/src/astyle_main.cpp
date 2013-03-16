@@ -85,7 +85,7 @@ jobject   g_obj;
 jmethodID g_mid;
 #endif
 
-const char* g_version = "2.03 beta";
+const char* g_version = "2.03 beta (with some patches from https://github.com/azat/astyle)";
 
 //-----------------------------------------------------------------------------
 // ASStreamIterator class
